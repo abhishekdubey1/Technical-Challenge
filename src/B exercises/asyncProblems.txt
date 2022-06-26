@@ -1,0 +1,12 @@
+//Since we are using try catch we can handle asyncronous code below with: async await
+async function getStatus(profile) {
+  if (profile?.status) {
+    return profile.status;
+  }
+  try {
+    const { status } = await getProfileAsync();
+    return status;
+  } catch (error) {
+    return `Error: ${error}`;
+  }
+}
